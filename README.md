@@ -1,2 +1,2 @@
 # ML
-MAchine Learning
+Machine Learning
