@@ -30,13 +30,8 @@ model = load_model(MODEL_PATH)
 # model._make_predict_function()          # Necessary
 # print('Model loaded. Start serving...')
 
-# You can also use pretrained model from Keras
-# Check https://keras.io/applications/
-#from keras.applications.resnet50 import ResNet50
-#model = ResNet50(weights='imagenet')
-#model.save('')
 print('Model loaded. Check http://127.0.0.1:5000/')
-folders = glob('Datasets\data\Train\*')
+folders = glob('Datasets\*')
 
 def model_predict(img_path, model):
     img = cv2.imread(img_path,cv2.IMREAD_GRAYSCALE)
@@ -84,7 +79,7 @@ def upload():
 
         # Process your result for human
         if preds[0][np.argmax(preds)]>0.97:
-            result = folders[np.argmax(preds)][20:]# Convert to string
+            result = folders[np.argmax(preds)][9:]# Convert to string
         else:
             result = "No Match Found"
         print(np.argmax(preds))
